@@ -1,0 +1,98 @@
+<div class="container-fluid">
+  <div class="parent">
+    <div class="parent-card">
+      <div class="card mt-4" style="padding: 2em">
+        <h3 class="text-center">Sign Up Form</h3>
+        <div class="card-body">
+          <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="usr">Full Name:</label>
+              <input
+                [class.invalid]="SignUpForm.get('fullName').hasError('required') &&
+                SignUpForm.get('fullName').touched"
+                type="text"
+                class="form-control"
+                formControlName="fullName"
+                required
+              />
+            </div>
+            <div class="text-danger" *ngIf="SignUpForm.get('fullName').hasError('required') &&
+            SignUpForm.get('fullName').touched">
+              Please provide your full name
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Email:</label>
+              <input
+              [class.invalid]="SignUpForm.get('email').hasError('email') || SignUpForm.get('email').hasError('required') &&
+                SignUpForm.get('email').touched"
+                type="text"
+                class="form-control"
+                formControlName="email"
+                required
+              />
+            </div>
+            <div class="text-danger" *ngIf="SignUpForm.get('email').hasError('email')">
+              Please provide valid email
+            </div>
+            <div class="text-danger" *ngIf="SignUpForm.get('email').hasError('required') &&
+            SignUpForm.get('email').touched">
+              Please provide an email
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Username:</label>
+              <input
+              [class.invalid]="SignUpForm.get('username').hasError('required') &&
+                SignUpForm.get('username').touched"
+                type="text"
+                class="form-control"
+                formControlName="username"
+                required
+              />
+            </div>
+            <div class="text-danger" *ngIf="SignUpForm.get('username').hasError('required') &&
+            SignUpForm.get('username').touched">
+              Please provide username
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Password:</label>
+              <input
+              [class.invalid]="SignUpForm.get('password').hasError('required') &&
+                SignUpForm.get('password').touched"
+                type="password"
+                class="form-control"
+                formControlName="password"
+                required
+              />
+            </div>
+            <div class="text-danger" *ngIf="SignUpForm.get('password').hasError('required') &&
+            SignUpForm.get('password').touched">
+              Please provide password
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Profile (Image Link):</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="profileImg"
+                required
+              />
+            </div>
+
+            <button
+              class="btn btn-primary mt-1"
+              type="submit"
+              [disabled]="SignUpForm.invalid"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
